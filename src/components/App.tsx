@@ -23,6 +23,10 @@ export const App = () => {
     let styleForResetBtnEndCount = counterValue === maxCounterValue ? 'EndCount' : '';
     let styleForValueError = minCounterValue < 0 || maxCounterValue < 0 || minCounterValue >= maxCounterValue || maxCounterValue <= minCounterValue || maxCounterValue > 10 ? 'Error' : '';
 
+    // Styles For Input
+    let minInputErrorStyle = minCounterValue < 0 || minCounterValue === maxCounterValue ? 'Error' : '';
+    let maxInputErrorStyle = maxCounterValue < 0 || maxCounterValue > 10 || minCounterValue === maxCounterValue ? 'Error' : '';
+
     // Callbacks
     const incCounterValue = () => {
         setCounterValue(counterValue = counterValue + 1);
@@ -97,11 +101,11 @@ export const App = () => {
 
                     <div className='InputValuesBlock'>
                         <div className='InputValue'>
-                            max value: <InputValue value={maxCounterValue} onChangeHandler={getMaxCounterValue} error={styleForValueError} min={minCounterValue} max={11}/>
+                            max value: <InputValue value={maxCounterValue} onChangeHandler={getMaxCounterValue} error={maxInputErrorStyle} min={minCounterValue} max={11}/>
                         </div>
 
                         <div className='InputValue'>
-                            min value: <InputValue value={minCounterValue} onChangeHandler={getMinCounterValue} error={styleForValueError} min={minValuesForMinInput} max={maxCounterValue}/>
+                            min value: <InputValue value={minCounterValue} onChangeHandler={getMinCounterValue} error={minInputErrorStyle} min={minValuesForMinInput} max={maxCounterValue}/>
                         </div>
                     </div>
 
